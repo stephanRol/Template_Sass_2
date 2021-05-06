@@ -79,6 +79,12 @@ h3 {
     margin-bottom: 10px;
     font-size: 1.5rem;
     font-weight: 500;
+    transition: 0.2s;
+
+    &:hover {
+        transform: scale(1.05);
+        transition: 0.2s;
+    }
 }
 
 .btn-principal {
@@ -100,4 +106,26 @@ h3 {
     justify-content: $principal;
     align-items: $cruzado;
     flex-wrap: $wrap;
+}
+
+//EJEMPLO DE FUNCION EN SASS
+
+@function font-calc($size, $type) {
+    $font: 16;
+
+    @if $type ==h1 {
+        $font: ($size + 0.2 * size);
+    }
+
+    @if $type ==h2 {
+        $font: ($size + 0.1 * size);
+    } @else {
+        $font: 16;
+    }
+
+    @return $font + px;
+}
+
+.ejemplo {
+    font-size: font-calc(50, h2);
 }
